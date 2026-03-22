@@ -2,11 +2,11 @@ package com.example.ex2.service;
 
 import com.example.ex2.entity.Produto;
 import com.example.ex2.repository.ProdutoRepository;
-import jakarta.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProdutoService {
@@ -22,15 +22,16 @@ public class ProdutoService {
         return produtoRepository.save(produto);
     }
 
-    public Produto delete(Long id) {
+    public void delete(Long id) {
         produtoRepository.deleteById(id);
     }
 
-    public Produto findById(Long id) {
-        return produtoRepository.findById(id).orElse(null);
+    public Optional<Produto> findById(Long id) {
+        return produtoRepository.findById(id);
     }
 
     public Produto atualizar(Long id, Produto produto) {
+        produto.setId(id);
         return produtoRepository.save(produto);
     }
 }
