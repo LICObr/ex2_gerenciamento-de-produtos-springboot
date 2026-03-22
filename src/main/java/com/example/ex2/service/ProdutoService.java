@@ -18,7 +18,7 @@ public class ProdutoService {
         return produtoRepository.findAll();
     }
 
-    public Produto Save(Produto produto) {
+    public Produto save(Produto produto) {
         return produtoRepository.save(produto);
     }
 
