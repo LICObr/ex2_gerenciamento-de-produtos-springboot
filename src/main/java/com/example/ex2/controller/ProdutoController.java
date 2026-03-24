@@ -32,9 +32,9 @@ public class ProdutoController {
     @PostMapping
     public ResponseEntity<Produto> save(@RequestBody Produto produto) {
         Produto save = produtoService.save(produto);
-            URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                    .path("/{id}").buildAndExpand(save.getId()).toUri();
-            return ResponseEntity.created(uri).body(save);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(save.getId()).toUri();
+        return ResponseEntity.created(uri).body(save);
     }
 
     @DeleteMapping("/{id}")
@@ -52,6 +52,6 @@ public class ProdutoController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Produto> update(@PathVariable Long id, @RequestBody Produto produto) {
-        return ResponseEntity.ok(produtoService.save(produto));
+        return ResponseEntity.ok(produtoService.atualizar(id, produto));
     }
 }
